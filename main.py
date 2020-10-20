@@ -174,7 +174,7 @@ def results_ds1(model, output):
     pandas.DataFrame(confusion_matrix(ds1_test_y, output))                                  .to_csv("output/" + model + ".csv", mode='a')
     pandas.DataFrame(precision_score(ds1_test_y, output, average=None, zero_division=0))    .to_csv("output/" + model + ".csv", mode='a', header=["PRECISION"])
     pandas.DataFrame(recall_score(ds1_test_y, output, average=None))                        .to_csv("output/" + model + ".csv", mode='a', header=["RECALL"])
-    pandas.DataFrame(f1_score(ds1_test_y, output, average = None))                          .to_csv("output/" + model + ".csv", mode='a')
+    pandas.DataFrame(f1_score(ds1_test_y, output, average = None))                          .to_csv("output/" + model + ".csv", mode='a', header=["F1-MEASURE"])
 
     with open("output/" + model + ".csv", "a") as file:
         writefile = csv.writer(file)
@@ -185,11 +185,10 @@ def results_ds1(model, output):
 
 def results_ds2(model, output):
     pandas.DataFrame(output)                                                                .to_csv("output/" + model + ".csv", mode='a', header=["PREDICTED CLASS"] )
+    pandas.DataFrame(confusion_matrix(ds2_test_y, output))                                  .to_csv("output/" + model + ".csv", mode='a')
     pandas.DataFrame(precision_score(ds2_test_y, output, average=None, zero_division=0))    .to_csv("output/" + model + ".csv", mode='a', header=["PRECISION"])
     pandas.DataFrame(recall_score(ds2_test_y, output, average=None))                        .to_csv("output/" + model + ".csv", mode='a', header=["RECALL"])
-    pandas.DataFrame(confusion_matrix(ds2_test_y, output))                                  .to_csv("output/" + model + ".csv", mode='a')
-    pandas.DataFrame(f1_score(ds2_test_y, output, average = None))                          .to_csv("output/" + model + ".csv", mode='a')
-
+    pandas.DataFrame(f1_score(ds2_test_y, output, average = None))                          .to_csv("output/" + model + ".csv", mode='a', header=["F1-MEASURE"])
     with open("output/" + model + ".csv", "a") as file:
         writefile = csv.writer(file)
         writefile.writerow("")
