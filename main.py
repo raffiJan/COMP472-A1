@@ -31,13 +31,13 @@ ds2_val_x = ds2_val[:,:-1]
 ds2_val_y = ds2_val[:, -1]
 
 def instance_count():
-    pandas.DataFrame(numpy.bincount(ds1_train_y)).to_csv("output/DS1-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 1: TRAINING"])
-    pandas.DataFrame(numpy.bincount(ds1_test_y)).to_csv("output/DS1-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 1: TEST"])
-    pandas.DataFrame(numpy.bincount(ds1_val_y)).to_csv("output/DS1-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 1: VALIDATION"])
+    pandas.DataFrame(numpy.bincount(ds1_train_y)).to_csv("instances/DS1-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 1: TRAINING"])
+    pandas.DataFrame(numpy.bincount(ds1_test_y)).to_csv("instances/DS1-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 1: TEST"])
+    pandas.DataFrame(numpy.bincount(ds1_val_y)).to_csv("instances/DS1-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 1: VALIDATION"])
 
-    pandas.DataFrame(numpy.bincount(ds2_train_y)).to_csv("output/DS2-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 2: TRAINING"])
-    pandas.DataFrame(numpy.bincount(ds2_test_y)).to_csv("output/DS2-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 2: TEST"])
-    pandas.DataFrame(numpy.bincount(ds2_val_y)).to_csv("output/DS2-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 2: VALIDATION"])
+    pandas.DataFrame(numpy.bincount(ds2_train_y)).to_csv("instances/DS2-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 2: TRAINING"])
+    pandas.DataFrame(numpy.bincount(ds2_test_y)).to_csv("instances/DS2-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 2: TEST"])
+    pandas.DataFrame(numpy.bincount(ds2_val_y)).to_csv("instances/DS2-Instances.csv", mode = "a", header = ["Distribution of class instances in Dataset 2: VALIDATION"])
 
 # GAUSSIAN NAIVE BAYES CLASSIFIER
 def gaussian_nb_ds1():
@@ -104,7 +104,7 @@ def best_dt_ds2():
     best_dt = tree.DecisionTreeClassifier(**grid_search.best_params_)
     best_dt.fit(ds2_train_x, ds2_train_y)
     best_dt_ds2_output = best_dt.predict(ds2_test_x)
-    results_ds2("Best-DT-DS1", best_dt_ds2_output)
+    results_ds2("Best-DT-DS2", best_dt_ds2_output)
 
 # PERCEPTRON
 def perceptron_ds1():
